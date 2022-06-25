@@ -1,21 +1,15 @@
 import model.Location;
 import repository.LocationRepository;
+import service.MenuService;
 
 public class MenuApp {
 
+    private static MenuService menuService = new MenuService();
+
+
     public static void main(String[] args) {
-        LocationRepository locationRepository=new LocationRepository();
-        Location location= createLocation();
-        locationRepository.createLocation(location);
+        menuService.init();
 
     }
 
-    public static Location createLocation(){
-        Location location=new Location();
-        location.setCity("Tirana");
-        location.setCountry("Albania");
-        location.setLatitude(41.34375340389631);
-        location.setLongitude(19.839559454999115);
-        return location;
-    }
 }

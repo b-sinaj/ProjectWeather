@@ -3,8 +3,10 @@ package repository;
 import config.HibernateConfig;
 import model.Location;
 import org.hibernate.Session;
+import scala.tools.nsc.doc.html.HtmlTags;
 
 import javax.management.Query;
+import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 public class LocationRepository {
@@ -49,13 +51,17 @@ public class LocationRepository {
     }
 
     //display all location
-    public List<Location>  getAllLocation(){
-        Session s=session.getSessionFactory().openSession();
-        s.beginTransaction();
-        String query = "select s from locations s";
-        List<Location> locations=session.createQuery(query, Location.class).getResultList();
-        s.getTransaction().commit();
-        s.close();
-        return locations;
+    public List<Location> getAllLocation(){
+        List<Location> results = null;
+        try {
+            CriteriaQuery<Location> criterias = session.getCriteriaBuilder().createQuery(Location.class);
+            criterias.from(Location.class);
+            results = session.createQuery(criterias).getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return results;
+
     }
 }
