@@ -2,15 +2,11 @@ package repository;
 
 import model.Location;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-
 
 public class LocationRepository {
-
     Session session=HibernateUtil.getSessionFactory().openSession();
 
-    //create location by location object
+    //create location by location objec
 
     public Location createLocation(Location location){
         Session s=session.getSessionFactory().openSession();
@@ -46,5 +42,4 @@ public class LocationRepository {
         s.getTransaction().commit();
         s.close();
     }
-
 }
