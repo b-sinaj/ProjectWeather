@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+
 public class LocationRepository {
 
     Session session=HibernateUtil.getSessionFactory().openSession();
