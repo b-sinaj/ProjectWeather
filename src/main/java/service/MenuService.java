@@ -1,10 +1,12 @@
 package service;
 
+import model.CurrentResponse;
 import model.Location;
 import org.hibernate.event.spi.SaveOrUpdateEvent;
 import repository.LocationRepository;
 
 import javax.sound.midi.Soundbank;
+import java.util.Currency;
 import java.util.List;
 import java.util.Scanner;
 
@@ -45,7 +47,7 @@ public class MenuService {
                 printMenu();
                 break;
             case "3":
-               // getWeatherData();
+               getWeatherData();
                 printMenu();
                 break;
 
@@ -59,12 +61,19 @@ public class MenuService {
             printMenu();
         }
         }
+    private void getWeatherData() {
+        System.out.println("Enter the city name: ");
+        String input= readInput();
+        WeatherService weatherService=new WeatherService();
+        CurrentResponse response= weatherService.getWeatherFromCity(input);
+        if (response==null){
+            System.out.println("Nuk kemi informacion per kete qytet!");
+        }
+        System.out.println("Temperatura : " +response.getTemperature() );
+        System.out.println("Drejtimi i eres  : " +response.getWindDir() );
+        System.out.println("Shpejtesia e eres : " +response.getWindSpeed());
 
-//
-//    private void getWeatherData() {
-//
-//
-//    }
+    }
 
     private void printListOfLocation() {
         System.out.println("-----------------All list of Locations----------------- ");
