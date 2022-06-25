@@ -6,6 +6,7 @@ public class MenuApp {
     public static void main(String[] args) {
         LocationRepository locationRepository=new LocationRepository();
         Location location= createLocation();
+        locationRepository.createLocation(location);
 
     }
 
