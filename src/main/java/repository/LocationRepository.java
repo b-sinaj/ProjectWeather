@@ -3,10 +3,12 @@ package repository;
 import model.Location;
 import org.hibernate.Session;
 
+import javax.management.Query;
+
 public class LocationRepository {
     Session session=HibernateUtil.getSessionFactory().openSession();
 
-    //create location by location objec
+    //create location by location object
 
     public Location createLocation(Location location){
         Session s=session.getSessionFactory().openSession();
@@ -41,5 +43,13 @@ public class LocationRepository {
         s.delete(location);
         s.getTransaction().commit();
         s.close();
+    }
+
+    //display all location
+    public Location getAllLocation(){
+        Session s=session.getSessionFactory().openSession();
+        s.beginTransaction();
+        String query = "select s from locations s";
+        Location locations=session.createQuery(query);
     }
 }
