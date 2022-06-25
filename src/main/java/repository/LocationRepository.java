@@ -10,7 +10,7 @@ public class LocationRepository {
 
     Session session=HibernateUtil.getSessionFactory().openSession();
 
-    //create location by location opbject
+    //create location by location object
 
     public Location createLocation(Location location){
         Session s=session.getSessionFactory().openSession();
