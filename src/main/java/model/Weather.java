@@ -1,12 +1,12 @@
 package model;
 
-import jakarta.persistence.*;
-
 import java.util.Date;
 import lombok.*;
 
+import javax.persistence.*;
+
 @Entity
-@Table (name = "weathers")
+@Table(name = "weathers")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter

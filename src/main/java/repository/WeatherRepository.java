@@ -1,14 +1,16 @@
 package repository;
 
+import config.HibernateConfig;
 import model.Location;
 import model.Weather;
 import org.hibernate.Session;
+import org.hibernate.jpa.HibernateQuery;
 
 import javax.persistence.Query;
 import java.util.List;
 
 public class WeatherRepository {
-    Session session = HibernateUtil.getSessionFactory().openSession();
+    Session session = HibernateConfig.getSessionFactory().openSession();
     static Location location = new Location();
 
 

@@ -1,5 +1,6 @@
 package repository;
 
+import config.HibernateConfig;
 import model.Location;
 import org.hibernate.Session;
 
@@ -7,6 +8,7 @@ import javax.management.Query;
 import java.util.List;
 
 public class LocationRepository {
+    private HibernateConfig HibernateUtil;
     Session session=HibernateUtil.getSessionFactory().openSession();
 
     //create location by location object
