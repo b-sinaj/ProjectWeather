@@ -9,10 +9,10 @@ import java.util.List;
 
 public class LocationRepository {
     private HibernateConfig HibernateUtil;
-    Session s = HibernateUtil.getSessionFactory().openSession();
 
     //create location by location object
     public Location createLocation(Location location) {
+        Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
         s.save(location);
         s.getTransaction().commit();
@@ -22,6 +22,7 @@ public class LocationRepository {
 
     //retrive location by ID
     public Location getLocationById(int id) {
+        Session s = HibernateUtil.getSessionFactory().openSession();
         Location location = s.get(Location.class, id);
         s.close();
         return location;
@@ -29,6 +30,7 @@ public class LocationRepository {
 
     //update location by a location object
     public void updateLocation(Location location) {
+        Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
         s.update(location);
         s.getTransaction().commit();
@@ -37,6 +39,7 @@ public class LocationRepository {
 
     //delete Location by a location object
     public void deleteLocation(Integer id) {
+        Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
         s.delete(getLocationById(id));
         s.getTransaction().commit();
@@ -45,6 +48,7 @@ public class LocationRepository {
 
     //display all location
     public List<Location> getAllLocation() {
+        Session s = HibernateUtil.getSessionFactory().openSession();
         List<Location> results = null;
         try {
             CriteriaQuery<Location> criterias = s.getCriteriaBuilder().createQuery(Location.class);
