@@ -4,9 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 
-
 @Entity
-@Table(name="locations")
+@Table(name = "locations")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -17,15 +16,15 @@ public class Location {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "city_id", nullable = false)
     private int cityId;
-    @Column(name ="city")
+    @Column(name = "city")
     private String city;
-    @Column(name ="country")
+    @Column(name = "country")
     private String country;
-    @Column(name ="latitude")
+    @Column(name = "latitude")
     private double latitude;
-    @Column(name ="longitude")
+    @Column(name = "longitude")
     private double longitude;
-    @Column(name ="region")
+    @Column(name = "region")
     private String region;
 
 }

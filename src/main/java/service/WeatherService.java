@@ -7,23 +7,20 @@ import model.WeatherResponse;
 
 public class WeatherService {
 
-    private final String ACCESS_KEY ="c1192590413603096f0ba5a889ac77cc";
+    private final String ACCESS_KEY = "c1192590413603096f0ba5a889ac77cc";
     private final String BASE_URL = "http://api.weatherstack.com";
 
-    public CurrentResponse getWeatherFromCity(String city){
+    public CurrentResponse getWeatherFromCity(String city) {
         try {
             // Create http client
             OkHttpClient client = new OkHttpClient();
-
             // Set URL and parameters
             HttpUrl.Builder urlBuilder
                     = HttpUrl.parse(BASE_URL + "/current").newBuilder();
-
             // Set query parameters
             urlBuilder.addQueryParameter("access_key", ACCESS_KEY);
             urlBuilder.addQueryParameter("query", city);
             String url = urlBuilder.build().toString();
-
             // Build request and execute
             Request request = new Request.Builder()
                     .url(url)
@@ -40,11 +37,10 @@ public class WeatherService {
 
             // Return class model
             return weatherResponse.getCurrent();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-      return null;
+        return null;
 
     }
 }

@@ -3,20 +3,17 @@ package repository;
 import config.HibernateConfig;
 import model.Location;
 import org.hibernate.Session;
-import scala.tools.nsc.doc.html.HtmlTags;
 
-import javax.management.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 public class LocationRepository {
     private HibernateConfig HibernateUtil;
-    Session session=HibernateUtil.getSessionFactory().openSession();
+    Session session = HibernateUtil.getSessionFactory().openSession();
 
     //create location by location object
-
-    public Location createLocation(Location location){
-        Session s=session.getSessionFactory().openSession();
+    public Location createLocation(Location location) {
+        Session s = session.getSessionFactory().openSession();
         s.beginTransaction();
         s.save(location);
         s.getTransaction().commit();
@@ -25,15 +22,15 @@ public class LocationRepository {
     }
 
     //retrive location by ID
-    public Location getLocationById (int id) {
+    public Location getLocationById(int id) {
         Session s = session.getSessionFactory().openSession();
-        Location location= s.get(Location.class , id);
+        Location location = s.get(Location.class, id);
         s.close();
         return location;
     }
 
     //update location by a location object
-    public  void updateLocation(Location location){
+    public void updateLocation(Location location) {
         Session s = session.getSessionFactory().openSession();
         s.beginTransaction();
         s.update(location);
@@ -42,8 +39,8 @@ public class LocationRepository {
     }
 
     //delete Location by a location object
-    public void deleteLocation(Location location){
-        Session s= session.getSessionFactory().openSession();
+    public void deleteLocation(Location location) {
+        Session s = session.getSessionFactory().openSession();
         s.beginTransaction();
         s.delete(location);
         s.getTransaction().commit();
@@ -51,7 +48,7 @@ public class LocationRepository {
     }
 
     //display all location
-    public List<Location> getAllLocation(){
+    public List<Location> getAllLocation() {
         List<Location> results = null;
         try {
             CriteriaQuery<Location> criterias = session.getCriteriaBuilder().createQuery(Location.class);

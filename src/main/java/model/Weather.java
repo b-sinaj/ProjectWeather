@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Date;
+
 import lombok.*;
 
 import javax.persistence.*;
@@ -17,17 +18,17 @@ public class Weather {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column (name = "date_from")
+    @Column(name = "date_from")
     private Date dateFrom;
-    @Column(name ="direction")
+    @Column(name = "direction")
     private int direction;
-    @Column(name ="humidity")
-    private  int humidity;
-    @Column(name ="pressure")
+    @Column(name = "humidity")
+    private int humidity;
+    @Column(name = "pressure")
     private int pressure;
-    @Column(name ="speed")
+    @Column(name = "speed")
     private double speed;
-    @Column(name ="temperature")
+    @Column(name = "temperature")
     private double temperature;
 
 }

@@ -8,13 +8,12 @@ import java.util.logging.Level;
 public class HibernateConfig {
     private static final SessionFactory sessionFactory = buildSessionFactory();
 
-            private static SessionFactory buildSessionFactory()
-            {
-                // Turn Hibernate logging off
-                java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.OFF);
-                try {
-                    // Create the SessionFactory from hibernate.cfg.xml
-                    return new Configuration().configure().buildSessionFactory();
+    private static SessionFactory buildSessionFactory() {
+        // Turn Hibernate logging off
+        java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.OFF);
+        try {
+            // Create the SessionFactory from hibernate.cfg.xml
+            return new Configuration().configure().buildSessionFactory();
 
         } catch (Throwable ex) {
             System.err.println("Initial SessionFactory creation failed." + ex);
