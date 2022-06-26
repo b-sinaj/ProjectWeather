@@ -39,10 +39,10 @@ public class LocationRepository {
     }
 
     //delete Location by a location object
-    public void deleteLocation(Location location) {
+    public void deleteLocation(Integer id) {
         Session s = session.getSessionFactory().openSession();
         s.beginTransaction();
-        s.delete(location);
+        s.delete(getLocationById(id));
         s.getTransaction().commit();
         s.close();
     }

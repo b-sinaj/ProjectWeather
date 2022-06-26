@@ -4,6 +4,7 @@ import model.CurrentResponse;
 import model.Location;
 import repository.LocationRepository;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 import java.util.Scanner;
 
@@ -23,10 +24,11 @@ public class MenuService {
 
     private void printMenu() {
         System.out.println("------------------ MAIN MENU -------------------");
+        System.out.println("0. Exit APP");
         System.out.println("1. ADD Location ");
         System.out.println("2. List Location");
         System.out.println("3. Get Weather Data");
-        System.out.println("4. Exit APP");
+        System.out.println("4. Delete Weather Data");
         System.out.println("-----------------Action require-----------------");
         System.out.print("Please choose a number : ");
         String input = readInput();
@@ -47,6 +49,10 @@ public class MenuService {
                 getWeatherData();
                 printMenu();
                 break;
+            case "4":
+                deleteWeatherData();
+                printMenu();
+                break;
         }
         if (input.isEmpty()) {
             System.out.println("Please give a number ! ");
@@ -55,6 +61,13 @@ public class MenuService {
             System.out.println("Please give a correct number !");
             printMenu();
         }
+    }
+
+    private void deleteWeatherData() {
+        System.out.println("Enter the Location by City ID : ");
+        Scanner scanner = new Scanner(System.in);
+        Integer inputId = scanner.nextInt();
+        locationRepository.deleteLocation(inputId);
     }
 
     private void getWeatherData() {
@@ -95,7 +108,7 @@ public class MenuService {
     private String readInput() {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
-        if (input.equals("4")) {
+        if (input.equals("0")) {
             System.out.println("System is shuting down");
             System.exit(1);
         }
