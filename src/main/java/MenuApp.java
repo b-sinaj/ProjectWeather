@@ -6,10 +6,8 @@ public class MenuApp {
 
     private static MenuService menuService = new MenuService();
 
-
     public static void main(String[] args) {
         menuService.init();
-
     }
 
 }
